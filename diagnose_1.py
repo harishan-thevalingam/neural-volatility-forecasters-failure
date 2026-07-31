@@ -1,20 +1,4 @@
-"""
-The diagnostic - the actual point of the project.
 
-A single correlation per simulator hides where each model wins or loses. Here we
-bin the forecast error against the KNOWN latent state, which only simulation lets
-us do, since on real data the state is hidden.
-
-Two views:
-  - by true-volatility decile: where in the vol range does each model struggle?
-  - by bars-since-regime-switch (Regime only): does the flexible model's edge live
-    in the post-switch window the average washes out?
-
-Error metric is QLIKE against the true variance: q = v_true/v_hat - log(v_true/v_hat) - 1,
-which is >=0, zero iff the forecast equals the truth. It's the natural loss here -
-same Gaussian-likelihood shape the models trained on, but scored against known truth
-instead of the realised return, so it's low-variance and not swamped by the z_t draw.
-"""
 
 import numpy as np
 
