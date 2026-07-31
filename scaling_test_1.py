@@ -1,21 +1,4 @@
-"""
-The falsifiable core: is the MLP's high-vol edge on Heston data-limited or structural?
 
-High-vol states are rare, so a fixed training set has few tail examples. Two hypotheses:
-
-  statistical  - the model just lacks tail examples. Prediction: grow the training
-                 set and the top-decile QLIKE keeps falling toward the noise floor.
-  structural   - the architecture can't represent the tail mapping regardless of data.
-                 Prediction: top-decile QLIKE plateaus above the floor.
-
-Simulation is what makes this answerable: we generate training sets across orders of
-magnitude, hold the test set fixed, and watch the top-decile error. Decay vs plateau
-is the whole result.
-
-Noise floor: even a perfect forecaster scores QLIKE>0 here only from finite-sample
-estimation - with the TRUE variance the QLIKE is 0 by construction, so the floor we
-compare against is 0, and "closes" means trends toward 0.
-"""
 
 import numpy as np
 from simulators_1 import sim_heston
