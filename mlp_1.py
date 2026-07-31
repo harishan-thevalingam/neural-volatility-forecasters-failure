@@ -1,18 +1,4 @@
-"""
-Feedforward volatility forecaster, the CPU-friendly counterpart to GARCH.
 
-GARCH encodes history through its beta recursion (persistence ~0.99, so variance
-depends on the whole past with geometric decay). A plain window of recent returns
-can't represent that, so we feed the model EWMAs of squared returns at several
-half-lives - each EWMA is the closed form of a geometric-decay memory, i.e. exactly
-the kind of summary GARCH's recursion computes.
-
-This keeps the comparison fair: EWMAs are deterministic functions of past returns,
-the same information set GARCH uses. Only the functional form differs - linear
-recursion vs learned nonlinear map. And with no recurrence, it trains in seconds.
-
-Output: log-variance for step t, trained by the shared Gaussian NLL.
-"""
 
 import numpy as np
 import torch
