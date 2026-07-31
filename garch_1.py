@@ -1,17 +1,4 @@
-"""
-GARCH(1,1) baseline, fit by maximum likelihood.
 
-Given returns r_1..r_T and params (omega, alpha, beta), run the variance
-recursion forward and score it by the Gaussian conditional log-likelihood:
-
-    r_t | past ~ N(0, v_t),   v_t = omega + alpha r_{t-1}^2 + beta v_{t-1}
-
-    log L = -1/2 sum_t [ log(2pi) + log v_t + r_t^2 / v_t ]
-
-Maximise over the three params. Low-dimensional, so a plain optimiser is fine.
-Params are optimised in an unconstrained space (softplus / logit) so we never
-hand the optimiser an invalid variance.
-"""
 
 import numpy as np
 from scipy.optimize import minimize
