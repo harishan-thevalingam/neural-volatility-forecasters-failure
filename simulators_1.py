@@ -1,10 +1,4 @@
-"""
-Three return processes with known conditional variance. We generate sigma_t^2
-ourselves, so unlike real data we can score forecasts against the truth.
 
-Each returns (r, v) with v[t] = Var(r_t | past): the variance used to draw r_t,
-and the target a forecaster at t-1 is predicting.
-"""
 
 import numpy as np
 
